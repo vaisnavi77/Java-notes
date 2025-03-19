@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Notes</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #f94c10, #ffcc29);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 80%;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+        }
+        button {
+            background-color: #ffcc29;
+            color: black;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #f94c10;
+            color: white;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Daily Notes</h1>
+    <textarea id="noteInput" placeholder="Enter your daily notes here..."></textarea><br>
+    <button onclick="uploadNote()">Upload</button>
+    <a href="viewer.html">View Notes</a>
+
+    <script>
+        function uploadNote() {
+            let note = document.getElementById("noteInput").value;
+            if (note.trim() === "") {
+                alert("Please enter some notes before uploading!");
+                return;
+            }
+            localStorage.setItem("dailyNotes", note);
+            alert("Notes uploaded successfully!");
+            document.getElementById("noteInput").value = "";
+        }
+    </script>
+</body>
+</html>
